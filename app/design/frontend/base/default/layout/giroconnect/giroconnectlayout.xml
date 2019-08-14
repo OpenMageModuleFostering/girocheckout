@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.1">
+    <checkout_onepage_index>
+        <reference name="head">
+            <block type="core/text" name="girocheckoutwidget">
+                <action method="setText">
+                    <text>          
+                        <![CDATA[
+                        <link rel="stylesheet" href="https://bankauswahl.giropay.de/widget/v2/style.css" />
+                        <script src="https://bankauswahl.giropay.de/widget/v2/girocheckoutwidget.js"></script>
+			            ]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+    </checkout_onepage_index> 
+    <ultimatecheckout_index_index>
+        <reference name="head">
+            <block type="core/text" name="girocheckoutwidget">
+                <action method="setText">
+                    <text>
+                        <![CDATA[
+                        <link rel="stylesheet" href="https://bankauswahl.giropay.de/widget/v2/style.css" />
+                        <script src="https://bankauswahl.giropay.de/widget/v2/girocheckoutwidget.js"></script>
+			            ]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+    </ultimatecheckout_index_index>
+    <typostores_onestepcheckout_index_index>
+        <reference name="head">
+            <block type="core/text" name="girocheckoutwidget">
+                <action method="setText">
+                    <text>
+                        <![CDATA[
+                        <link rel="stylesheet" href="https://bankauswahl.giropay.de/widget/v2/style.css" />
+                        <script src="https://bankauswahl.giropay.de/widget/v2/girocheckoutwidget.js"></script>
+			            ]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+    </typostores_onestepcheckout_index_index>
+</layout>

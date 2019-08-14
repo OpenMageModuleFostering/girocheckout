@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Girosolution_Giroconnect>
+      <active>true</active>
+      <codePool>community</codePool>
+      <depends>
+        <Mage_Payment />
+      </depends>
+    </Girosolution_Giroconnect>
+  </modules>
+</config>

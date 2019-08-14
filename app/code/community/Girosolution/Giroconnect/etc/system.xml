@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <sections>
+    <payment translate="label" module="giroconnect">
+      <groups>
+        <giroconnect_giropay translate="label">
+          <label>Giropay (GiroCheckout)</label>
+          <sort_order>991</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <giropay_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </giropay_mid>
+            <giropay_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </giropay_pid>
+            <giropay_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </giropay_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <giropay_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </giropay_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <giropay_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </giropay_purpose>
+          </fields>
+        </giroconnect_giropay>
+        <giroconnect_directdebit translate="label">
+          <label>Direct Debit (GiroCheckout)</label>
+          <sort_order>992</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <directdebit_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </directdebit_mid>
+            <directdebit_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </directdebit_pid>
+            <directdebit_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </directdebit_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <directdebit_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </directdebit_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <directdebit_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+          </directdebit_purpose>
+          <directdebit_showbankacc translate="label">
+            <label>Show Bank Account/ Bank Code input field</label>
+            <frontend_type>select</frontend_type>
+            <source_model>adminhtml/system_config_source_yesno</source_model>
+            <sort_order>70</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+          </directdebit_showbankacc>
+          </fields>
+        </giroconnect_directdebit>
+        <giroconnect_creditcard translate="label">
+          <label>Credit Card (GiroCheckout)</label>
+          <sort_order>994</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <creditcard_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </creditcard_mid>
+            <creditcard_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </creditcard_pid>
+            <creditcard_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </creditcard_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <creditcard_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </creditcard_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <creditcard_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </creditcard_purpose>
+            <creditcard_visamaster translate="label">
+              <label>Enable Visa/Mastercard</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>46</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </creditcard_visamaster>
+            <creditcard_amex translate="label">
+              <label>Enable AMEX</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>47</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </creditcard_amex>
+            <creditcard_jcb translate="label">
+              <label>Enable JCB</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>48</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </creditcard_jcb>
+          </fields>
+        </giroconnect_creditcard>
+        <giroconnect_ideal translate="label">
+          <label>iDEAL (GiroCheckout)</label>
+          <sort_order>995</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <ideal_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </ideal_mid>
+            <ideal_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </ideal_pid>
+            <ideal_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </ideal_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <ideal_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </ideal_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <ideal_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </ideal_purpose>
+          </fields>
+        </giroconnect_ideal>
+        <giroconnect_eps translate="label">
+          <label>eps (GiroCheckout)</label>
+          <sort_order>996</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <eps_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </eps_mid>
+            <eps_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </eps_pid>
+            <eps_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </eps_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <eps_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </eps_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <eps_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </eps_purpose>
+          </fields>
+        </giroconnect_eps>
+        <giroconnect_sofortuw translate="label">
+          <label>SOFORT Überweisung (GiroCheckout)</label>
+          <sort_order>995</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <sofortuw_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </sofortuw_mid>
+            <sofortuw_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </sofortuw_pid>
+            <sofortuw_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </sofortuw_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <sofortuw_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sofortuw_createinvoice>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <sofortuw_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </sofortuw_purpose>
+          </fields>
+        </giroconnect_sofortuw>
+        <giroconnect_paydirekt translate="label">
+          <label>Paydirekt (GiroCheckout)</label>
+          <sort_order>996</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <!--<validate>required-entry</validate>-->
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status_new</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_status>
+            <paydirekt_mid translate="label">
+              <label>Merchant-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </paydirekt_mid>
+            <paydirekt_pid translate="label">
+              <label>Project-ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>25</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </paydirekt_pid>
+            <paydirekt_security translate="label">
+              <label>Project-Password</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>30</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Information from GiroCockpit</comment>
+            </paydirekt_security>
+            <allowspecific translate="label">
+              <label>Payment from Applicable Countries</label>
+              <frontend_type>allowspecific</frontend_type>
+              <sort_order>35</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Payment from Specific Countries</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>40</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </specificcountry>
+            <paydirekt_createinvoice translate="label">
+              <label>Create invoice after successful payment</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>45</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </paydirekt_createinvoice>  
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sort_order>
+            <paydirekt_purpose translate="label">
+              <label>Purpose</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>60</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>You can define your own purpose using this placeholders:
+    {ORDERID}: Bestellnummer
+    {CUSTOMERID}: Kundennummer
+    {SHOPNAME}: Shop Name
+    {CUSTOMERNAME}: Kundenname
+    {CUSTOMERFIRSTNAME}: Kunde Vorname
+    {CUSTOMERLASTNAME}: Kunde Nachname
+  For example: If your purpose is Best. {ORDERID}, {SHOPNAME} then the submitted purpose must be Best. 55342, TestShop
+  The maximum length of the purpose is 27 characters.</comment>
+            </paydirekt_purpose>                                        
+          </fields>
+        </giroconnect_paydirekt>
+      </groups>
+    </payment>
+  </sections>
+</config>

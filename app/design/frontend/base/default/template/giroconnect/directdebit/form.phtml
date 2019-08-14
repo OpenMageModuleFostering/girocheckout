@@ -1,0 +1,105 @@
+<?php
+/*
+ * Payment selection block for DirectDebit.
+ * Sie erteilen die Genehmigung, den Betrag von Ihrem Konto einzuziehen. Bitte geben Ihre Kontonummer 
+ * und Bankleitzahl ein. Die Sicherheit Ihrer persönlichen Daten ist uns sehr wichtig. 
+ * Deshalb speichern wir Ihre Kontodaten nicht in unserem System. Bei jeder Bestellung ist 
+ * eine Neuangabe Ihrer Bankverbindung in unserem Shop erforderlich. 
+ */
+
+//$languageCode = Mage::app()->getStore()->getCode();
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_EC_50_px.jpg');
+
+$_code = $this->getMethodCode();
+
+$strVisibleDivIban = "block;";
+$strVisibleDivBank = "none;";
+
+$helperForm = Mage::helper('giroconnect/directdebit');
+$proxyForm = $helperForm->getDirectdebitPaymentProxy();
+?>
+<script>
+  var j = jQuery.noConflict();
+
+  j(document).ready(function () {
+    j("input[name='payment[<?php print($_code); ?>_cdatabankcheck]']").click(function () {
+
+      var rbValor = j(this).val();
+      if (rbValor === "rbIbanDirectdebit") {
+        j("#divBankDatasDirectdebit").hide();
+        j("#divIbanDirectdebit").show();
+
+        j("#<?php print($_code); ?>_bankaccount").val("").removeClass("input-text required-entry");
+        j("#<?php print($_code); ?>_bankcode").val("").removeClass("input-text required-entry");
+        j("#<?php print($_code); ?>_iban").addClass("input-text required-entry");
+
+      } else {
+        j("#divIbanDirectdebit").hide();
+        j("#divBankDatasDirectdebit").show();
+
+        j("#<?php print($_code); ?>_bankaccount").addClass("input-text required-entry");
+        j("#<?php print($_code); ?>_bankcode").addClass("input-text required-entry");
+        j("#<?php print($_code); ?>_iban").val("").removeClass("input-text required-entry");
+      }
+    });
+  });
+</script>
+
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+    <img src="<?php echo $logoMarkupURL; ?>" alt="Direct Debit"/>
+  </li>
+  <li>
+<?php print($this->__('Hereby you authorize us to charge your current account with the invoiced amount by direct debit.')); ?>
+  </li>
+
+  <li>
+      <?php if( $proxyForm->getShowBankAcc() ) { ?>
+      <dl>
+        <dd>
+          <input type="radio" name="payment[<?php print($_code); ?>_cdatabankcheck]" id="rbIbanDirectdebit" checked="checked" value="rbIbanDirectdebit"/><label class="gs_dd_toggle" for="rbIbanDirectdebit"><?php print($this->__('IBAN')); ?></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="radio" name="payment[<?php print($_code); ?>_cdatabankcheck]" id="rbBankDatasDirectdebit" value="rbBankDatasDirectdebit"/><label class="gs_dd_toggle" for="rbBankDatasDirectdebit"><?php print($this->__('use bank account/bank code')); ?></label>
+        </dd>
+      </dl>
+    <?php } ?>
+    <p>
+      <label for="<?php print($_code); ?>_check_date" ><?php print($this->__('Account holder')); ?>:</label><br>
+      <span class="input-box">
+        <input type="text" maxlength="27" class="input-text required-entry" title="<?php print($this->__('Account holder')); ?>" id="<?php print($_code); ?>_accountholder" name="payment[<?php print($_code); ?>_accountholder]" value="<?php print($this->htmlEscape(Mage::getSingleton('checkout/session')->getDirectdebitAccountholder())); ?>" />
+        <br>
+      </span>
+    </p>
+    <div id ="divIbanDirectdebit" style="display: <?php echo $strVisibleDivIban; ?>">
+      <p>
+        <label for="<?php print($_code); ?>_check_date" ><?php print($this->__('IBAN')); ?>:</label><br>
+        <span class="input-box">
+          <input type="text" size="24" class="input-text required-entry" title="<?php print($this->__('IBAN')); ?>" id="<?php print($_code); ?>_iban" name="payment[<?php print($_code); ?>_iban]" value="<?php print($this->htmlEscape(Mage::getSingleton('checkout/session')->getDirectdebitIban())); ?>" />
+        </span>
+      </p>
+    </div>
+      <div id ="divBankDatasDirectdebit" style="display: <?php echo $strVisibleDivBank; ?>">
+        <p>
+          <label for="<?php print($_code); ?>_check_date" ><?php print($this->__('Account number')); ?>:</label><br>
+          <span class="input-box">
+            <input type="text" maxlength="15" title="<?php print($this->__('Account number')); ?>" id="<?php print($_code); ?>_bankaccount" name="payment[<?php print($_code); ?>_bankaccount]" value="<?php print($this->htmlEscape(Mage::getSingleton('checkout/session')->getDirectdebitBankaccount())); ?>" />
+            <br><?php // print($this->__('(Plicht, w keine IBAN angegeben ist)'));         ?>
+          </span>
+        </p>
+        <p>
+          <label for="<?php print($_code); ?>_check_date" ><?php print($this->__('Bank code')); ?>:</label><br>
+          <span class="input-box">
+            <input type="text" maxlength="8" title="<?php print($this->__('Bank code')); ?>" id="<?php print($_code); ?>_bankcode" name="payment[<?php print($_code); ?>_bankcode]" value="<?php print($this->htmlEscape(Mage::getSingleton('checkout/session')->getDirectdebitBankcode())); ?>" />
+            <br><?php // print($this->__('(Plicht, wenn keine IBAN angegeben ist)'));         ?>
+          </span>
+        </p>
+      </div>
+  </li>
+
+</ul>
+<script type="text/javascript">
+  //< ![CDATA[
+  var customForm = new VarienForm('payment_form_<?php print($_code); ?>');
+  //]]>
+</script>

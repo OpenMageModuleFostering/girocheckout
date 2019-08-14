@@ -1,0 +1,31 @@
+<?php
+/*
+ * Payment selection block for Creditcard.
+ */
+
+//$languageCode = Mage::app()->getStore()->getCode();
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_VISA_MC_50_px.jpg');
+
+
+$_code = $this->getMethodCode();
+$helperForm = Mage::helper('giroconnect/creditcard');
+$proxyForm = $helperForm->getCreditcardPaymentProxy();
+
+$strLogoName = $proxyForm->getExtendedLogo(); 
+if( strlen($strLogoName) > 0 ) 
+  $logoMarkupURL = $this->getSkinUrl('images/giroconnect/'.$strLogoName);
+else
+  $logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_VISA_MC_50_px.jpg');
+?>
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+    <img src="<?php echo $logoMarkupURL; ?>" alt="Credit Card"/>
+  </li>
+  <li>
+      <?php print($this->__('On the following secure website, you are asked to enter your credit card data. If your credit card is enabled for 3D Secure (Verified by Visa or MasterCard Secure Code), additional information will be passed for a security check at your bank.')); ?>
+  </li>
+</ul>
+

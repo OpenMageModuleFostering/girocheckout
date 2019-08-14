@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Girosolution_Giroconnect>
+            <version>4.0.0.9</version>
+        </Girosolution_Giroconnect>
+    </modules>
+    <global>
+        <models>
+            <giroconnect>
+                <class>Girosolution_Giroconnect_Model</class>
+            </giroconnect>
+        </models>
+        <helpers>
+            <giroconnect>
+                <class>Girosolution_Giroconnect_Helper</class>
+            </giroconnect>
+        </helpers>
+        <blocks>
+            <giroconnect>
+                <class>Girosolution_Giroconnect_Block</class>
+            </giroconnect>
+        </blocks>
+        <resources>
+            <giroconnect_setup>
+                <setup>
+                    <module>Girosolution_Giroconnect</module>  
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </giroconnect_setup>
+            <giroconnect_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </giroconnect_write>
+            <giroconnect_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </giroconnect_read>
+        </resources>
+    </global>
+    
+    <frontend>
+      
+        <translate>
+            <modules>
+                <Girosolution_Giroconnect>
+                    <files>
+                        <default>Girosolution_Giroconnect.csv</default>
+                    </files>
+                </Girosolution_Giroconnect>
+            </modules>
+        </translate>
+        <routers>
+            <giroconnect>
+                <use>standard</use>
+                <args>
+                    <module>Girosolution_Giroconnect</module>
+                    <frontName>giroconnect</frontName>
+                </args>
+            </giroconnect>
+        </routers>
+        <layout>
+            <updates>
+                <giroconnect>
+                    <file>giroconnect/giroconnectlayout.xml</file>
+                </giroconnect>
+            </updates>
+        </layout>
+        <events>
+        <payment_method_is_active>
+            <observers>
+                <giroconnect_payment_method_is_active>
+                    <type>singleton</type>
+                    <class>Girosolution_Giroconnect_Model_Observer</class>
+                    <method>paymentMethodIsActive</method>
+                </giroconnect_payment_method_is_active>
+            </observers>
+        </payment_method_is_active>
+    </events>
+    </frontend>
+    
+    <adminhtml>
+        <translate>
+            <modules>
+                <Girosolution_Giroconnect>
+                    <files>
+                        <default>Girosolution_Giroconnect.csv</default>
+                    </files>
+                </Girosolution_Giroconnect>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <default>
+        <payment>
+           <giroconnect_giropay>
+               <model>giroconnect/payment_giropay</model>
+               <active>1</active>
+               <title>giropay</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <giropay_purpose>Best. {ORDERID}, {SHOPNAME}</giropay_purpose>
+           </giroconnect_giropay>
+           <giroconnect_directdebit>
+               <model>giroconnect/payment_directdebit</model>
+               <active>0</active>
+               <title>Direct Debit</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <directdebit_purpose>Best. {ORDERID}, {SHOPNAME}</directdebit_purpose>
+           </giroconnect_directdebit>
+           <giroconnect_creditcard>
+               <model>giroconnect/payment_creditcard</model>
+               <active>0</active>
+               <title>Credit Card</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <creditcard_purpose>Best. {ORDERID}, {SHOPNAME}</creditcard_purpose>
+           </giroconnect_creditcard>
+           <giroconnect_ideal>
+               <model>giroconnect/payment_ideal</model>
+               <active>0</active>
+               <title>iDEAL</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <ideal_purpose>Best. {ORDERID}, {SHOPNAME}</ideal_purpose>
+           </giroconnect_ideal>
+           <giroconnect_eps>
+               <model>giroconnect/payment_eps</model>
+               <active>0</active>
+               <title>eps</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <eps_purpose>Best. {ORDERID}, {SHOPNAME}</eps_purpose>
+           </giroconnect_eps>
+           <giroconnect_sofortuw>
+               <model>giroconnect/payment_sofortuw</model>
+               <active>0</active>
+               <title>SOFORT</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <sofortuw_purpose>Best. {ORDERID}, {SHOPNAME}</sofortuw_purpose>
+           </giroconnect_sofortuw>
+           <giroconnect_paydirekt>
+               <model>giroconnect/payment_paydirekt</model>
+               <active>0</active>
+               <title>Paydirekt</title>
+               <order_status>1</order_status>
+               <payment_action>authorize</payment_action>
+               <paydirekt_purpose>Best. {ORDERID}, {SHOPNAME}</paydirekt_purpose>
+           </giroconnect_paydirekt>
+        </payment>
+    </default>
+</config>

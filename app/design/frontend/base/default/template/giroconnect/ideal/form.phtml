@@ -1,0 +1,53 @@
+<?php
+
+/*
+ * Payment selection block for iDEAL.
+ */
+
+
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+
+$helper = Mage::helper('giroconnect/ideal');
+$proxy = $helper->getIdealPaymentProxy();
+
+//Get the list of issuers for iDEAL.
+$issuers = $proxy->getIssuers();
+
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_iDeal_50_px.jpg'); //Find Icon
+
+
+
+$_code = $this->getMethodCode();
+?>
+
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+      <img src="<?php echo $logoMarkupURL; ?>" alt="iDEAL"/>
+  </li>
+  <li>
+      <?php print($this->__('With iDEAL you pay simply, fast and secure by online banking of your bank. You will be redirected to the online banking of your bank where you authorize the credit transfer with PIN and TAN.')); ?>&nbsp;
+  </li>
+  <li>
+      <label for="<?php print($_code); ?>_issuer" class="required"><em>*</em><?php print($this->__('Issuer List')); ?>:</label>
+      <div class="input-box">
+        <div class="v-fix">
+            <select id="<?php echo $_code ?>_issuer" name="payment[<?php echo $_code ?>_issuer]">
+                <?php
+                   $boolSelected = TRUE;
+                   $markup = '';
+                   foreach($issuers as $ccKey => $ccName) {
+                       $markup .= '<option value="' . $ccKey . '" ';
+                       if($boolSelected == TRUE) {
+                           $boolSelected = FALSE;
+                           $markup .= 'selected="selected"';
+                       }
+                       $markup .= '>' . $ccName . '</option>';
+                   }
+                   print($markup);
+                ?>
+            </select>
+        </div>
+      </div>
+  </li>
+</ul>

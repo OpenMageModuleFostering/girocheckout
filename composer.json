@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/GiroCheckout",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "German payment plugin that provides 7 payment methods.",
+    "authors": [
+    {
+        "name": "Oliver Marx",
+        "email": "support@girosolution.de"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

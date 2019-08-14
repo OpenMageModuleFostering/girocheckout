@@ -1,0 +1,35 @@
+<?php
+/*
+ * Payment selection block for eps.
+ * Mit eps zahlen Sie im Internet einfach, schnell und sicher per Online-Überweisung.
+ * Das Online-Zahlverfahren eps wurde innerhalb der deutschen Kreditwirtschaft entwickelt 
+ * und hat mit der Postbank, den Sparkassen und den Volksbanken Raiffeisenbanken starke 
+ * vertrauensvolle Partner, die höchste Sicherheitsstandards garantieren.
+ */
+
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_eps_50_px.jpg');
+$_code = $this->getMethodCode();
+?>
+
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+    <img src="<?php echo $logoMarkupURL; ?>" alt="Eps"/>
+  </li>
+  <li>
+    <?php print($this->__('With eps online transfer you pay simply, fast and secure by online banking of your bank. Your will be redirected to the online banking at your bank where you authorize the credit transfer with PIN and TAN.'))?>
+  </li>
+  <li>
+    <label for="<?php print($_code); ?>_check_date" class="required"><em>*</em><?php print($this->__('Bank (BIC)')); ?>:</label>
+    <span class="input-box">
+      <input class="card-number required-entry" name="payment[<?php print($_code); ?>_bic]" id="<?php print($_code); ?>_bic" onkeyup="girocheckout_widget(this, event, 'bic', '3')" type="text" size="60" value="<?php print($this->htmlEscape(Mage::getSingleton('checkout/session')->getEpsBic())); ?>" autocomplete="off" style="z-index:1000;"/><br><?php print($this->__('(Suchen Sie nach Bankname, BLZ, Ort oder BIC.)')); ?>
+    </span>
+  </li>
+</ul>
+<script type="text/javascript">
+    //< ![CDATA[
+        var customForm = new VarienForm('payment_form_<?php print($_code); ?>');
+    //]]>
+</script>

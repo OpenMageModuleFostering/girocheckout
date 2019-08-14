@@ -1,0 +1,23 @@
+<?php
+/*
+ * Payment selection block for Sofortuw.
+ */
+
+//$languageCode = Mage::app()->getStore()->getCode();
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_sofort_50_px.jpg');
+
+
+$_code = $this->getMethodCode();
+?>
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+    <img src="<?php echo $logoMarkupURL; ?>" alt="SOFORT Überweisung"/>
+  </li>
+  <li>
+      <?php print($this->__('Direct payment via online banking. Make payments the easy way with your own online banking details – fast and direct. You will be redirected to the web site of SOFORT, where you will enter your banking data and initiate the electronic wire transfer.')); ?>
+  </li>
+</ul>
+

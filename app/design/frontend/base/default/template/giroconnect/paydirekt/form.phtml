@@ -1,0 +1,23 @@
+<?php
+/*
+ * Payment selection block for Paydirekt.
+ */
+
+//$languageCode = Mage::app()->getStore()->getCode();
+//$languageCode = Mage::helper('giroconnect')->getLanguageCode();
+
+//Get the logo url.
+$logoMarkupURL = $this->getSkinUrl('images/giroconnect/Logo_paydirekt_50_px.jpg');
+
+
+$_code = $this->getMethodCode();
+?>
+<ul class="form-list" id="payment_form_<?php print($_code); ?>" style="display:none;">
+  <li>
+    <img src="<?php echo $logoMarkupURL; ?>" alt="Paydirekt"/>
+  </li>
+  <li>
+      <?php print($this->__('The online payment method of the German banks and Sparkassen. You will be redirected to the Paydirekt web site, where you will log into your personal account and authorize the payment. You require prior registration with Paydirekt. This payment method only works with German banking accounts.')); ?>
+  </li>
+</ul>
+
