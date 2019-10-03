@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/GiroCheckout",
+    "name": "openmage-module-fostering\/girocheckout",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "German payment plugin that provides 7 payment methods.",
     "authors": [
